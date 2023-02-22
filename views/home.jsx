@@ -12,5 +12,5 @@ function home () {
   }
  
 
-module.deports = home
+module.exports = home
 

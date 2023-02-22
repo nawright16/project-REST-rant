@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 
-app.set('views', _dirname + 'views')
+//app.set('views', __dirname + '/views')
 app.set('view engine', 'jsx')
 app.engine('jsx', require('express-react-views').createEngine())
 
@@ -13,7 +13,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-    res.status(404).send('<h1>404 Page</h1>')
-})
+    res.render('error404')
+  })
+  
 app.listen(process.env.PORT)
 

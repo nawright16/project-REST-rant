@@ -3,13 +3,13 @@ let places = [{
     city: 'Seattle',
     state: 'WA',
     cuisines: 'Thai, Pan-Asian',
-    pic: 'http://placekitten.com/250/250'
+    pic: '/images/tirza-van-dijk-hbwdmqcmP6k-unsplash.jpg'
   }, {
     name: 'Coding Cat Cafe',
     city: 'Phoenix',
     state: 'AZ',
     cuisines: 'Coffee, Bakery',
-    pic: 'http://placekitten.com/250/250'
+    pic: '/images/fer-nando-45JXWRNoTqU-unsplash.jpg'
   }]
 
   module.exports = places

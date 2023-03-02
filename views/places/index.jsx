@@ -20,6 +20,7 @@ function index(data) {
           Located in {place.city}, {place.state}
         </p>
       </div>
+      
     )
   })
 

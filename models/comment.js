@@ -1,4 +1,4 @@
-const mongoos = require('mongoose')
+const mongoose = require('mongoose')
 
 let commentSchema = new mongoose.Schema({
     author: { type: String, default: 'Anonymous'},

@@ -36,8 +36,7 @@ function show({ place }) {
                 <h4>
                     Serving {place.cuisines}
                 </h4>
-                <h2>Comments</h2>
-                {comments}
+
                 <a href={`/places/${place.id}/edit`} className="btn btn-warning">
                     Edit
                 </a>
@@ -46,6 +45,23 @@ function show({ place }) {
                     <button type="submit" className="btn btn-danger">
                         Delete
                     </button>
+                </form>
+                <h2>Comments</h2>
+                {comments}
+                <form method="POST" action="/comment">
+                    <label htmlFor="author">Author</label>
+                    <input type="text" name="author" id="author" />
+                    <hr />
+                    <label htmlFor="content">Content </label>
+                    <input type="textArea" name="content" id="content" />
+                    <hr />
+                    <label htmlFor="star">Stars </label>
+                    <input type="number" name="star" id="star" />
+                    <hr />
+                    <label htmlFor="rant">Rant </label>
+                    <input type="checkbox" name="rant" id="rant" />
+                    <hr />
+                    <input type="submit" />
                 </form>
             </body>
         </Def>

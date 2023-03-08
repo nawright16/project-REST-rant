@@ -2,7 +2,7 @@ const React = require('react')
 const Def = require('../default')
 
 function new_form() {
-    let message = ''                 
+    let message = 'DANGER'                 
     if (data.message) {
       message = (
         <h4 className="alert-danger">

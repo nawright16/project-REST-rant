@@ -24,15 +24,15 @@ router.post('/', (req, res) => {
       if (err && err.name == 'ValidationError') {
         let message = 'Validation Error: '
         for (var field in err.errors) {
-            message += `${field} was ${err.errors[field].value}. `
-            message += `${err.errors[field].message}`
+          message += `${field} was ${err.errors[field].value}. `
+          message += `${err.errors[field].message}`
         }
         console.log('Validation error message', message)
         res.render('places/new', { message })
-    }
-    else {
+      }
+      else {
         res.render('error404')
-    }
+      }
     })
 })
 
@@ -44,7 +44,7 @@ router.get('/new', (req, res) => {
 
 router.get('/:id', (req, res) => {
   db.Place.findById(req.params.id)
-  .populate('comments')
+    .populate('comments')
     .then(place => {
       console.log(place.comments)
       res.render('places/show', { place })
@@ -71,26 +71,39 @@ router.get('/:id/edit', (req, res) => {
 
 router.post('/:id/comment', (req, res) => {
   console.log(req.body)
+
+  if (req.body.rant == "on") {
+    req.body.rant = true
+  } else {
+    req.body.rant = false
+  }
+
   db.Place.findById(req.params.id)
-  .then(place => {
+    .then(place => {
       db.Comment.create(req.body)
-      .then(comment => {
+        .then(comment => {
           place.comments.push(comment.id)
           place.save()
-          .then(() => {
+            .then(() => {
               res.redirect(`/places/${req.params.id}`)
-          })
-      })
-      .catch(err => {
+            })
+        })
+        .catch(err => {
           res.render('error404')
-      })
-  })
-  .catch(err => {
+        })
+    })
+    .catch(err => {
       res.render('error404')
-  })
+    })
 })
 
-
+router.get('/:id/comment', (req, res) => {
+  console.log(req.body);
+  db.Place.findById(req.params.id)
+    .then(place => {
+      res.render('places/newcomment', { place });
+    })
+})
 
 
 router.delete('/:id/rant/:rantId', (req, res) => {

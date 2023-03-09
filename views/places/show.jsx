@@ -11,7 +11,7 @@ function show({ place }) {
         comments = place.comments.map(c => {
             return (
                 <div className="border">
-                    <h2 className="rant">{c.rant ? 'Rant! ðŸ˜¡' : 'Rave! ðŸ˜»'}</h2>
+                    <h2 className="rant">{c.rant ? 'Rant! 😡' : 'Rave! 😻'}</h2>
                     <h4>{c.content}</h4>
                     <h3>
                         <stong>- {c.author}</stong>
@@ -48,21 +48,7 @@ function show({ place }) {
                 </form>
                 <h2>Comments</h2>
                 {comments}
-                <form method="POST" action="/comment">
-                    <label htmlFor="author">Author</label>
-                    <input type="text" name="author" id="author" />
-                    <hr />
-                    <label htmlFor="content">Content </label>
-                    <input type="textArea" name="content" id="content" />
-                    <hr />
-                    <label htmlFor="star">Stars </label>
-                    <input type="number" name="star" id="star" />
-                    <hr />
-                    <label htmlFor="rant">Rant </label>
-                    <input type="checkbox" name="rant" id="rant" />
-                    <hr />
-                    <input type="submit" />
-                </form>
+                <a href={`/places/${place.id}/comment`}>Add New Comment</a>
             </body>
         </Def>
     )

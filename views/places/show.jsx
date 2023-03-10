@@ -7,14 +7,32 @@ function show({ place }) {
             No comments yet!
         </h3>
     )
+    let rating = (
+        <h3 className="inactive">
+            Not yet rated
+        </h3>
+    )
     if (place.comments.length) {
+        let sumRatings = place.comments.reduce((tot, c) => {
+            return tot + c.stars
+        }, 0)
+        let averageRating = Math.round(sumRatings / place.comments.length)
+        let stars = ''
+        for (let i = 0; i < averageRating; i++){
+            stars += '⭐'
+        }
+        rating = (
+            <h3>
+                {stars} stars
+            </h3>
+        )
         comments = place.comments.map(c => {
             return (
                 <div className="border">
                     <h2 className="rant">{c.rant ? 'Rant! 😡' : 'Rave! 😻'}</h2>
                     <h4>{c.content}</h4>
                     <h3>
-                        <stong>- {c.author}</stong>
+                        <strong>- {c.author}</strong>
                     </h3>
                     <h4>Rating: {c.stars}</h4>
                 </div>
@@ -30,7 +48,7 @@ function show({ place }) {
             </main>
             <body>
                 <h2>Rating</h2>
-                <p>Not Rated</p>
+                {rating}
                 <h2>Description</h2>
                 <h3>{place.showEstablished()}</h3>
                 <h4>

@@ -1,12 +1,12 @@
 const React = require('react')
 const Def = require('../default.jsx')
 
-function edit_form({place, index}) {
+function edit_form({ place, index }) {
     return (
         <Def>
             <main>
                 <h1>Edit {place.name}</h1>
-                <form method="POST" action={`/places/${index}?_method=PUT`}>
+                <form method="POST" action={`/places/${place.id}?_method=PUT`}>
                     <div className="row">
                         <div className="form-group col-sm-6">
                             <label htmlFor="name">Place Name</label>
@@ -23,6 +23,10 @@ function edit_form({place, index}) {
                         <div className="form-group col-sm-6">
                             <label htmlFor="state">State</label>
                             <input className="form-control" id="state" name="state" defaultValue={place.state} />
+                        </div>
+                        <div className="form-group col-sm-4">
+                            <label htmlFor="founded">Founded</label>
+                            <input className="form-control" id="founded" name="founded" value={place.founded} />
                         </div>
                         <div className="form-group col-sm-6">
                             <label htmlFor="cuisines">Cuisines</label>

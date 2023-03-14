@@ -3,10 +3,10 @@ const Def = require('../default')
 
 function new_form() {
     let message = 'DANGER'                 
-    if (data.message) {
+    if (message) {
       message = (
         <h4 className="alert-danger">
-          {data.message}
+          {message}
         </h4>
       )
     }
